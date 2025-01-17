@@ -24,6 +24,9 @@ fi
 
 # Add a TODO to calcurse
 function todo() {
+  local TODO
+  local PRIORITY
+
   echo "Enter the TODO item: "
   read -r TODO
 
