@@ -41,3 +41,44 @@ function todo() {
   echo "TODO item added successfully."
   echo -e "\e[0m"
   }
+
+# Add an appointment to calcurse
+function add_apt() {
+  local APT
+  local DATE
+  local iTIME
+  local fTIME
+
+  echo -e "\e[33m"
+  echo "Enter the appointment:"
+  echo -e "\e[0m"
+  read -r APT
+
+  echo -e "\e[33m"
+  echo -e "Enter the date (MM/DD/YYYY | today | tomorrow): \e[0m"
+  read -r DATE
+  if [ ${DATE} == "today" ]; then
+    DATE=$(date +"%m/%d/%Y")
+    echo "set for today: ${DATE}"
+  elif [ ${DATE} == "tomorrow" ]; then
+    DATE=$(date --date="next day" +"%m/%d/%Y")
+    echo "set for tomorrow: ${DATE}"
+  fi
+
+  echo -e "\e[33m"
+  echo -e "When do you want to start (HH:MM): \e[0m"
+  read -r iTIME
+
+  echo -e "\e[33m"
+  echo -e "When do you want to end (HH:MM): \e[0m"
+  read -r fTIME
+
+
+  APT="${DATE} @ ${iTIME} -> ${DATE} @ ${fTIME}|${APT}"
+
+  echo "$APT" >>"$CLACURSE_DIR/apts"
+
+  echo -e "\e[32m"
+  echo "Appointment added successfully."
+  echo -e "\e[0m"
+  }
