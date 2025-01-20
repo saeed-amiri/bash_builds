@@ -6,10 +6,10 @@
 # First check if calcurse is installed
 if ! [ -x "$(command -v calcurse)" ]; then
   echo -e "\e[31m"
+  echo "Message from calcurse_mang.sh in ubuntu_essential.sh from MyScripts"
   echo 'Error: calcurse is not installed.' >&2
   echo "use 'sudo apt install calcurse' to install calcurse" >&2
   echo -e "\e[0m"
-  exit 1
 fi
 
 # Check if the calcurse directory exists
@@ -17,6 +17,7 @@ CLACURSE_DIR="$HOME/.local/share/calcurse"
 
 if [ ! -d "$CLACURSE_DIR" ]; then
   echo -e "\e[31m"
+  echo "Message from calcurse_mang.sh in ubuntu_essential.sh from MyScripts"
   echo "Error: calcurse directory: '${CLACURSE_DIR}' does not exist." >&2
   echo "Please check or create the directory and try again." >&2
   echo -e "\e[0m"
